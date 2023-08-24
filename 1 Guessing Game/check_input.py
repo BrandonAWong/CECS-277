@@ -71,16 +71,15 @@ def get_int_range(prompt, low, high):
   """
   val = 0
   valid = False
-  try:
-    val = int(input(prompt))
-    if val >= low and val <= high:
-      valid = True
-    else:
-      print("Invalid input - should be within range " + str(low) + "-" + str(high) + ".")
-      return None
-  except ValueError:
-    print("Invalid input - should be an integer.")
-    return None
+  while not valid:
+    try:
+      val = int(input(prompt))
+      if val >= low and val <= high:
+        valid = True
+      else:
+        print("Invalid input - should be within range " + str(low) + "-" + str(high) + ".")
+    except ValueError:
+      print("Invalid input - should be an integer.")
   return val
 
 

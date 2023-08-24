@@ -1,5 +1,5 @@
-# Names: Brandon W
-# Date: 8/22/2023
+# Names: 
+# Date: 8/24/2023
 # Desc: Random number guessing game
 
 
@@ -12,15 +12,12 @@ def main() -> None:
     guess: int = get_int_range("I'm thinking of a number. Make a guess (1-100): ", 1, 100)
     attempts: int = 1
     while target != guess:
-        if not guess:
-            guess = get_int_range("Guess again (1-100): ", 1, 100)
-            attempts -= 1
-        elif guess < target:
-            guess = get_int_range("Too low! Guess again (1-100): ", 1, 100)
+        if guess < target:
+            print("Too low! ", end='')
         elif guess > target:
-            guess = get_int_range("Too high! Guess again (1-100): ", 1, 100)
+            print("Too high! ", end='')
+        guess = get_int_range("Guess again (1-100): ", 1, 100)
         attempts += 1
-            
     print(f"Correct! You got it in {attempts} tries")
 
 
