@@ -14,7 +14,7 @@ def main() -> None:
     while target != guess:
         if guess < target:
             print("Too low! ", end='')
-        elif guess > target:
+        else:
             print("Too high! ", end='')
         guess = get_int_range("Guess again (1-100): ", 1, 100)
         attempts += 1
