@@ -33,6 +33,17 @@ def print_cards(a: str | int, b: str | int, c: str | int):
          "+-----+ +-----+ +-----+"
     )
 
+def play_again() -> bool:
+    again: str = None
+    while True:
+        again = input("Play again? (Y/N): ").lower()
+        if again == 'y':
+            return True
+        elif again == 'n':
+            return False
+        else:
+            print("Invalid input")
+
 def main() -> None:
     print("-Three card Monte-\n"
           "Find the queen to double your bet!\n")
@@ -48,11 +59,11 @@ def main() -> None:
             money += 2 * bet
         else:
             print("Sorry... you lose.")
-        if money <= 0 or input("Play again? (Y/N): ").lower() != 'y':
+        if not play_again():
             break
 
     if money <= 0:
-          print("You're out of money. Beat it loser!")
+        print("You're out of money. Beat it loser!")
     else:
         print(f"Bye 👋\nYou are leaving with ${money}.")
     
