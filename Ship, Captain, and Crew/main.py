@@ -20,6 +20,7 @@ def find_winner(player_points: list[int]):
     '''
     Displays both players' points and displays who won. If scores are the same, display tie.
     '''
+    print("Score:")
     for i in range(2):
         print(f"Player #{i+1} = {player_points[i]}")
     if player_points[0] == player_points[1]:
@@ -29,22 +30,62 @@ def find_winner(player_points: list[int]):
     else:
         print("Player #2 won!")
 
-def main():
-    print("- Ship, Captain, and Crew! -")
+def find_keep(dice: list[int], keep: list[int]) -> None:
+    '''
+    Finds the dice to keep and not to reroll.
+    '''
+    wants = [6, 5, 4]
+    for i, want in enumerate(wants):
+        if want in dice and len(keep) == i:
+            keep.append(str(want))
+            dice.remove(want)
+            if want == 6:
+                print("Yo ho ho! Ye secured a ship!")
+            elif want == 5:
+                print("Shiver me timbers! A Capt'n!")
+            elif want == 4:
+                print("Ye bribed a crew with Grog!") 
+       
+def find_cargo(dice: list[int], keep: list[int]) -> None:
+    '''
+    Finds and prints the cargo with a given roll if the keep is maxed out.
+    '''
+    if len(keep) == 3:
+        print(f"Cargo = {dice[0]} {dice[1]}\n"
+              f"Your cargo points are: {sum(dice)}\n")
+    else:
+        print()
+
+def play_again(turn: int) -> bool:
+    '''
+    Checks if player wants to continue rolling.
+    '''
+    if turn < 2:
+        if input("Roll again? ").lower() != 'y':
+            return False
+    return True
+
+def main() -> None:
+    print("- Ship, Captain, and Crew! -\n")
     players_points: list[int] = []
     for i in range(2):
         print(f"Player #{i+1}'s Turn")
         keep: list[int] = []
-        for _ in range(3):
+        for turn in range(3):
             roll: list[int] = [None] * (5 - len(keep))
             roll_dice(roll)
             display_dice("Roll", roll)
-            # add to keep
-
-            print(f"Keep = {keep}")
-        players_points.append(roll[0] + roll[1])
+            find_keep(roll, keep)
+            print(f"Keep = {' '.join(keep)}")
+            find_cargo(roll, keep)
+            if not play_again(turn):
+                break
+        if len(keep) == 3:
+            players_points.append(sum(roll))
+        else:
+            players_points.append(0)
+        print(f"Player #{i+1} points = {players_points[i]}\n")
     find_winner(players_points)
-
 
 
 main()
