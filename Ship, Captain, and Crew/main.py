@@ -37,7 +37,7 @@ def find_keep(dice: list[int], keep: list[int]) -> None:
     wants = [6, 5, 4]
     for i, want in enumerate(wants):
         if want in dice and len(keep) == i:
-            keep.append(str(want))
+            keep.append(want)
             dice.remove(want)
             if want == 6:
                 print("Yo ho ho! Ye secured a ship!")
@@ -45,16 +45,6 @@ def find_keep(dice: list[int], keep: list[int]) -> None:
                 print("Shiver me timbers! A Capt'n!")
             elif want == 4:
                 print("Ye bribed a crew with Grog!") 
-       
-def find_cargo(dice: list[int], keep: list[int]) -> None:
-    '''
-    Finds and prints the cargo with a given roll if the keep is maxed out.
-    '''
-    if len(keep) == 3:
-        print(f"Cargo = {dice[0]} {dice[1]}\n"
-              f"Your cargo points are: {sum(dice)}\n")
-    else:
-        print()
 
 def play_again(turn: int) -> bool:
     '''
@@ -76,8 +66,8 @@ def main() -> None:
             roll_dice(roll)
             display_dice("Roll", roll)
             find_keep(roll, keep)
-            print(f"Keep = {' '.join(keep)}")
-            find_cargo(roll, keep)
+            display_dice("Keep", keep)
+            display_dice("Cargo", roll) if len(keep) == 3 else print()
             if not play_again(turn):
                 break
         if len(keep) == 3:
