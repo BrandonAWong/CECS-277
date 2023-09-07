@@ -67,7 +67,11 @@ def main() -> None:
             display_dice("Roll", roll)
             find_keep(roll, keep)
             display_dice("Keep", keep)
-            display_dice("Cargo", roll) if len(keep) == 3 else print()
+            if len(keep) == 3:
+                display_dice("Cargo", roll)
+                print(f"Your cargo points are: {sum(roll)}")
+            else:
+                print()
             if not play_again(turn):
                 break
         if len(keep) == 3:
