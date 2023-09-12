@@ -50,7 +50,7 @@ def main() -> None:
         else:
             print("You cannot move there.")
     display_maze(maze, loc)
-    print("Congratulations! You solved the maze.")
+    print("\nCongratulations! You solved the maze.")
     return
 
 main()
