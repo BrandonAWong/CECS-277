@@ -56,10 +56,14 @@ def main():
                 print(f"Tasks:")
                 [print(task) for task in tasklist]
             case 3:
-                try:
-                    print(f"Marking current task as complete: {tasklist.mark_complete()}\n"
-                        f"New current task is: {tasklist[0]}")
-                except IndexError:
+                if len(tasklist) >= 1:
+                    print(f"Marking current task as complete: {tasklist[0]}")
+                    tasklist.mark_complete()
+                    if len(tasklist) > 0:
+                        print(f"New current task is: {tasklist[0]}")
+                    else:
+                        print("No new current tasks")
+                else:
                     print("No more tasks to complete!")
             case 4:
                 tasklist.add_task(input("Enter a task: "), get_date(), get_time())

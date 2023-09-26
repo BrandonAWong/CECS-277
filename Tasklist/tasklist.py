@@ -14,11 +14,11 @@ class Tasklist:
         self.tasklist.append(Task(desc, date, time))
         self.tasklist.sort()
 
-    def mark_complete(self) -> str:
+    def mark_complete(self) -> None:
         '''
         Completes the list on the top of the stack and gets removed
         '''
-        return self.tasklist.pop(0)
+        self.tasklist.pop(0)
 
     def save_file(self) -> None:
         '''
