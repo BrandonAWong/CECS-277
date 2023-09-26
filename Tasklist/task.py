@@ -26,6 +26,6 @@ class Task:
         elif taskTime[1] != otherTime[1]:
             return taskTime[1] < otherTime[1]
         else:
-            return self.description < other.description
+            return self.description > other.description
         
         
