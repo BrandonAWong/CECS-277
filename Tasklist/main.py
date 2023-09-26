@@ -7,6 +7,9 @@ from tasklist import Tasklist
 from check_input import get_int_range
 
 def main_menu() -> int:
+    '''
+    Prints main menu and asks for user to choose choice
+    '''
     print("1. Dislpay current task\n"
           "2. Display all tasks\n"
           "3. Mark current task complete\n"
@@ -15,6 +18,9 @@ def main_menu() -> int:
     return get_int_range("Enter a choice: ", 1, 5)
 
 def get_date() -> str:
+    '''
+    Prompts user multiple times for necessary data for date of task
+    '''
     print("Enter due date:")
     month: str = str(get_int_range("Enter month: ", 1, 12))
     if len(month) < 2:
@@ -26,6 +32,9 @@ def get_date() -> str:
     return f"{month}/{day}/{year}"
 
 def get_time() -> str:
+    '''
+    Prompts user multiple times for necessary data for time of task
+    '''
     print("Enter time:")
     hour: str = str(get_int_range("Enter hour: ", 0, 23))
     if len(hour) < 2:
