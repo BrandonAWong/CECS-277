@@ -43,6 +43,6 @@ class Rectangle():
 
     def move_right(self) -> None:
         '''
-        Moves the rectangle down
+        Moves the rectangle right
         '''
         self.x += 1
