@@ -1,6 +1,6 @@
 # Names: Brandon Wong & Trung Ho
 # Date: 9/26/2023
-# Desc: CLI todo which utilizes Python classes to hold information our our tasklist and tasks
+# Desc: CLI todo which utilizes Python classes to hold information of our tasklist and tasks
 
 
 from tasklist import Tasklist
