@@ -1,4 +1,7 @@
 class Card:
+    '''
+    Representation of a playing card
+    '''
     def __init__(self, suit: int, rank: int):
         self._suit: int = suit
         self._rank: int = rank
