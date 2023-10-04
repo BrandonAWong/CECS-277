@@ -20,7 +20,7 @@ class Player:
         sum = 0
         for card in self._hand:
             if card.rank == "Ace":
-                if sum >= 10:
+                if sum <= 10:
                     sum += 11
                 else:
                     sum += 1
