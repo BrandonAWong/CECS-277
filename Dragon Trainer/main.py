@@ -19,7 +19,7 @@ def main():
     player: Hero = Hero(name, 50)
     dragons: list = [Dragon("Deadly Nadder", 10),
                      FireDragon("Gronkle", 15,3 ),
-                     FlyingDragon("Timberjack", 20, 3)]
+                     FlyingDragon("Timberjack", 20, 5)]
     while dragons and player.hp > 0:
         print(f"\n{player}")
         [print(f"{i+1}. {d}") for i, d in enumerate(dragons)]
@@ -34,7 +34,7 @@ def main():
             dragons.pop(d_choice)
         
         if dragons:
-            d_atk = choice(dragons)
+            d_atk: Dragon | FireDragon | FlyingDragon = choice(dragons)
             if choice([False, True]):
                 print(d_atk.basic_attack(player))
             else:
