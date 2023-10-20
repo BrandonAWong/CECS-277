@@ -1,9 +1,9 @@
-# Name: Brandon Wong
+# Name: Trung Ho, Dylan Garvey, Brandon Wong
 # Date: 10/17/2023
 # Desc: CLI game where you are given 3 random doors and you must open them to escape.
 
 
-from random import choice
+from random import randint
 from check_input import get_int_range
 from basic_door import BasicDoor
 from locked_door import LockedDoor
@@ -28,8 +28,8 @@ def open_door(door) -> None:
 
 def main():
     print("Welcome to the Escape Room. You must unlock 3 doors to escape...\n")
-    door_options = (BasicDoor(), LockedDoor(), DeadboltDoor(), ComboDoor(), CodeDoor())
-    doors = [choice(door_options) for _ in range(3)]
+    door_options = [BasicDoor(), LockedDoor(), DeadboltDoor(), ComboDoor(), CodeDoor()]
+    doors = {door_options.pop(randint(0, len(door_options)-1)) for _ in range(3)}
     for d in doors:
         open_door(d)
     print("Congratulations! You escaped... this time.")
