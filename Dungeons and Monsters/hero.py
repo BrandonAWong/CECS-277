@@ -5,7 +5,7 @@ from random import randint
 
 class Hero(Entity):
     def __init__(self, name: str):
-        self.super(name, 25)
+        super().__init__(name, 25)
         self._loc: list[int] = [0, 0]
 
     @property
