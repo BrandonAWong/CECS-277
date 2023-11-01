@@ -4,7 +4,7 @@ from random import choice, randint
 
 class Enemy(Entity):
     def __init__(self):
-        self.super(choice({"Goblin", "Vampire","Ghoul", "Skeleton", "Zombie"}), randint(4, 8))
+        super().__init__(choice(("Goblin", "Vampire","Ghoul", "Skeleton", "Zombie")), randint(4, 8))
     
     def attack(self, entity: Entity) -> str:
         dmg: int = randint(1, 4)
