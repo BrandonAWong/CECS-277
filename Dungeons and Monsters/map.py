@@ -2,7 +2,7 @@ class Map:
     _instance = None
     _initialized = False
 
-    def __new__(cls, *args): 
+    def __new__(cls): 
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
@@ -10,7 +10,7 @@ class Map:
     def __init__(self):
         if not Map._initialized:
             with open("map.txt", "r") as f:
-                self._map: list[list[chr]] = f.readlines()
+                self._map: list[list[chr]] = [[c for c in row] for row in f.readlines()]
             self._revealed: list[list[bool]] = [[False for _ in row] for row in self._map]
             Map._initialized = True
 
