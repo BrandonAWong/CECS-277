@@ -20,23 +20,23 @@ class Hero(Entity):
     def go_north(self) -> chr:
         if self.loc[0] > 0:
             self.loc[0] -= 1
-            return Map(self.loc)
+            return Map()[self.loc[0]][self.loc[1]]
         return "o"
     
     def go_south(self) -> chr:
-        if self.loc[0] < len(Map):
+        if self.loc[0] < len(Map()):
             self.loc[0] += 1
-            return Map(self.loc)
+            return Map()[self.loc[0]][self.loc[1]]
         return "o"
     
     def go_east(self) -> chr:
         if self.loc[1] > 0:
             self.loc[1] -= 1
-            return Map(self.loc)
+            return Map()[self.loc[0]][self.loc[1]]
         return "o"
     
     def go_west(self) -> chr:
-        if self.loc[1] < len(Map[self.loc[1]]):
+        if self.loc[1] < len(Map()[self.loc[1]]):
             self.loc[1] += 1
-            return Map(self.loc)
+            return Map()[self.loc[0]][self.loc[1]]
         return "o"
