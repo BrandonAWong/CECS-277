@@ -52,7 +52,7 @@ def main():
                 dungeon.remove_at_loc(player.loc)
                 print("You found a Health Potion! You drink it to restore your health.\n")
             else:
-                print("You are at full health. You decide to save the potion for later.\n")
+                print("You found a Health Potion! You are at full health. You decide to save the potion for later.\n")
         elif tile == "n":
             print("There is nothing here...\n")
         elif tile == "s":
