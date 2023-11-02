@@ -18,25 +18,29 @@ class Hero(Entity):
         return f"{self.name} attacks a {entity.name} for {dmg} damage."
     
     def go_north(self) -> chr:
+        '''Moves player location up a row'''
         if self.loc[0] > 0:
             self.loc[0] -= 1
             return Map()[self.loc[0]][self.loc[1]]
         return "o"
     
     def go_south(self) -> chr:
-        if self.loc[0] < len(Map()):
+        '''Moves player location down a row'''
+        if self.loc[0] < len(Map()) - 1:
             self.loc[0] += 1
             return Map()[self.loc[0]][self.loc[1]]
         return "o"
     
     def go_east(self) -> chr:
-        if self.loc[1] > 0:
-            self.loc[1] -= 1
+        '''Moves player location right a column'''
+        if self.loc[1] < len(Map()[self.loc[0]]) - 2:
+            self.loc[1] += 1
             return Map()[self.loc[0]][self.loc[1]]
         return "o"
     
     def go_west(self) -> chr:
-        if self.loc[1] < len(Map()[self.loc[1]]):
-            self.loc[1] += 1
+        '''Moves player location left a column'''
+        if self.loc[1] > 0:
+            self.loc[1] -= 1
             return Map()[self.loc[0]][self.loc[1]]
         return "o"
