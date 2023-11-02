@@ -36,7 +36,8 @@ def main():
                 battle_choice: int = get_int_range("Enter choice: ", 1, 2)
                 if battle_choice == 1:
                     print(player.attack(monster))
-                    print(monster.attack(player))
+                    if monster.hp:
+                        print(monster.attack(player))
                 elif battle_choice == 2:
                     dungeon.reveal(player.loc)
                     print("You ran away!\n")
