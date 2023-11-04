@@ -10,7 +10,7 @@ class Map:
     def __init__(self):
         if not Map._initialized:
             with open("map.txt", "r") as f:
-                self._map: list[list[chr]] = [[c for c in row] for row in f.readlines()]
+                self._map: list[list[chr]] = [[c for c in row if c != "\n"] for row in f.readlines()]
             self._revealed: list[list[bool]] = [[False for _ in row] for row in self._map]
             Map._initialized = True
 
@@ -28,7 +28,7 @@ class Map:
         '''
         mapped: list[list[str]] = [[self[i][j] if self._revealed[i][j] or self[i][j] == "\n" else "x" for j in range(len(self[i]))] for i in range(len(self))]
         mapped[loc[0]][loc[1]] = "*"
-        return "".join([" ".join(row) for row in mapped])
+        return "\n".join([" ".join(row) for row in mapped])
     
     def reveal(self, loc: list[int]) -> None:
         '''Sets input location as seen'''

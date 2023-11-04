@@ -33,7 +33,7 @@ class Hero(Entity):
     
     def go_east(self) -> chr:
         '''Moves player location right a column'''
-        if self.loc[1] < len(Map()[self.loc[0]]) - 2:
+        if self.loc[1] < len(Map()[self.loc[0]]) - 1:
             self.loc[1] += 1
             return Map()[self.loc[0]][self.loc[1]]
         return "o"
