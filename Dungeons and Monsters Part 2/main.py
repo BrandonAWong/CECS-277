@@ -1,5 +1,7 @@
-# Names: 
-
+# Names: Trung Ho, Dylan Garvey, Brandon Wong
+# Date: 11/07/23
+# Desc: Sequel of Dungeons and Monsters which now asks users to choose a difficulty
+# of the game. Players traverse multiple dungeons in attempt to escape them all.
 
 from hero import Hero
 from beginner_factory import BeginnerFactory
@@ -11,12 +13,12 @@ from random import choice
 
 def main():
     player: Hero = Hero(input("What is your name, traveler? "))
-    difficulty: int = get_int_range("Difficulty:\n1. Beginner\n2. Expert\n", 1, 2)
-    if difficulty == 1:
+    if get_int_range("Difficulty:\n1. Beginner\n2. Expert\n", 1, 2) == 1:
         enemy_factory = BeginnerFactory()
     else:
         enemy_factory = ExpertFactory()
     dungeon: Map = Map()
+    map_counter: int = 1
     while player.hp:
         dungeon.reveal(player.loc)
         print(f"{player}\n{dungeon.show_map(player.loc)}\n"
@@ -52,7 +54,7 @@ def main():
                     break
             if not monster.hp:
                 dungeon.remove_at_loc(player.loc)
-                print(f"You have slain a {monster.name}\n")
+                print(f"You have slain a {monster.name}")
         elif tile == "i":
             if player.hp < 25:
                 player.heal()
@@ -67,8 +69,11 @@ def main():
         elif tile == "o":
             print("You cannot go that way...\n")
         elif tile == "f":
-            print("Congratulations! You fond the exit.")
-            break
+            if map_counter >= 3:
+                map_counter = 0
+            map_counter += 1
+            dungeon.load_map(map_counter)
+            print("Congratulations! You fond the stairs to the next floor of the dungeon.")
 
     if not player.hp:
         print("You died.")
