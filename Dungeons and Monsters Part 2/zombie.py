@@ -3,6 +3,7 @@ from random import randint
 
 
 class Zombie(Entity):
+    '''Expert level Zombie which has more base HP and DMG'''
     def __init__(self):
         super().__init__("Giant Zombie", randint(8, 10))
 

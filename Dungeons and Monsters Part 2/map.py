@@ -22,6 +22,7 @@ class Map:
         return len(self._map)
     
     def load_map(self, map_num: int) -> None:
+        '''Loads the chosen map based off of map_num'''
         with open(f"map{map_num}.txt", "r") as f:
             self._map: list[list[chr]] = [[c for c in row] for row in f.readlines()]
         self._revealed: list[list[bool]] = [[False for _ in row] for row in self._map]

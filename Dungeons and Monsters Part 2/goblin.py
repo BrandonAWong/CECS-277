@@ -3,6 +3,7 @@ from random import randint
 
 
 class Goblin(Entity):
+    '''Expert level Goblin which has more base HP and DMG'''
     def __init__(self):
         super().__init__("Greedy Goblin", randint(8, 12))
 

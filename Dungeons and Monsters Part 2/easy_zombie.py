@@ -3,6 +3,7 @@ from random import randint
 
 
 class EasyZombie(Entity):
+    '''Beginner level Zombie has normal amount of HP and DMG'''
     def __init__(self):
         super().__init__("Zombie", randint(4, 5))
 
